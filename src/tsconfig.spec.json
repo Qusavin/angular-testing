@@ -1,0 +1,12 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "module": "commonjs",
+        "allowUnreachableCode": true,
+        "allowJs": true,
+        "sourceMap": true,
+        "noEmit": true,
+        "types": ["jest", "node"]
+    },
+    "include": ["**/*.spec.ts", "**/*.d.ts"]
+}
