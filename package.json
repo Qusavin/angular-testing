@@ -19,13 +19,6 @@
     "@angular/router": "16.1.0",
     "@ng-web-apis/common": "^3.0.1",
     "@ng-web-apis/universal": "^3.0.2",
-    "@taiga-ui/cdk": "3.36.2",
-    "@taiga-ui/core": "3.36.2",
-    "@taiga-ui/icons": "3.36.2",
-    "@taiga-ui/kit": "3.36.2",
-    "@taiga-ui/styles": "3.36.2",
-    "@tinkoff/ng-dompurify": "3.0.0",
-    "dompurify": "2.2.9",
     "rxjs": "7.8.0",
     "tslib": "2.3.0",
     "zone.js": "0.13.0"
