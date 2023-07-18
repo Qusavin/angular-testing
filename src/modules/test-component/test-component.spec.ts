@@ -1,5 +1,45 @@
+import {
+    Component,
+    ContentChild,
+    EventEmitter,
+    Input,
+    Output,
+    TemplateRef,
+} from '@angular/core';
 import {MockBuilder, MockRender, ngMocks} from 'ng-mocks';
-import {ChildComponent, TargetComponent} from './test-components';
+
+@Component({
+    selector: 'at-child',
+    template: 'child {{someInput}}',
+    standalone: true,
+})
+class ChildComponent {
+    @ContentChild('something')
+    injectedSomething: TemplateRef<void> | undefined;
+
+    @Input()
+    someInput = '';
+
+    @Output()
+    readonly someOutput = new EventEmitter<string>();
+}
+
+@Component({
+    selector: 'target-mock-component',
+    template: `
+        <at-child
+            [someInput]="value"
+            (someOutput)="log($event)"
+        ></at-child>
+    `,
+    standalone: true,
+    imports: [ChildComponent],
+})
+class TargetComponent {
+    value = '';
+
+    log(value: string) {}
+}
 
 describe('MockComponent', () => {
     beforeEach(() => MockBuilder(TargetComponent));
