@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {ValueChangesDirective} from './value-changes.directive';
+import {AtValueChangesDirective} from './value-changes.directive';
 import {MockBuilder, MockedComponentFixture, MockRender, ngMocks} from 'ng-mocks';
 
 describe(`AtValueChangesDirective`, () => {
@@ -18,7 +18,7 @@ describe(`AtValueChangesDirective`, () => {
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
         standalone: true,
-        imports: [ValueChangesDirective, ReactiveFormsModule],
+        imports: [AtValueChangesDirective, ReactiveFormsModule],
     })
     class TestComponent {
         readonly form = new FormGroup({

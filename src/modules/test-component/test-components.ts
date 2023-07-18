@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 @Component({
-    selector: 'child',
+    selector: 'at-child',
     template: 'child {{someInput}}',
     standalone: true,
 })
@@ -26,10 +26,10 @@ export class ChildComponent {
 @Component({
     selector: 'target-mock-component',
     template: `
-        <child
+        <at-child
             [someInput]="value"
             (someOutput)="log($event)"
-        ></child>
+        ></at-child>
     `,
     standalone: true,
     imports: [ChildComponent],

@@ -7,7 +7,7 @@ import {distinctUntilChanged, switchAll} from 'rxjs/operators';
     selector: '[atValueChanges]',
     standalone: true,
 })
-export class ValueChangesDirective<T> implements DoCheck {
+export class AtValueChangesDirective<T> implements DoCheck {
     private readonly refresh$ = new Subject<Observable<T>>();
 
     @Output()

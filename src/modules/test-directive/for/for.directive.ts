@@ -12,7 +12,7 @@ import {
     selector: '[ngFor][ngForOf][ngForElse],[ngFor][ngForOf][ngForEmpty]',
     standalone: true,
 })
-export class ForDirective<T, K = unknown> implements OnChanges {
+export class AtForDirective<T, K = unknown> implements OnChanges {
     private ref?: EmbeddedViewRef<unknown>;
 
     @Input()

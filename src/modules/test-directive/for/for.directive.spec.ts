@@ -1,7 +1,7 @@
 import {Component, ElementRef, Inject} from '@angular/core';
 import {Subject} from 'rxjs';
 import {MockBuilder, MockRender} from "ng-mocks";
-import {ForDirective} from './for.directive';
+import {AtForDirective} from './for.directive';
 import {CommonModule} from "@angular/common";
 
 describe(`AtFor directive`, () => {
@@ -14,7 +14,7 @@ describe(`AtFor directive`, () => {
             <ng-template #blank>Blank</ng-template>
         `,
         standalone: true,
-        imports: [ForDirective, CommonModule]
+        imports: [AtForDirective, CommonModule]
     })
     class TestComponent {
         readonly items$ = new Subject<string[]>();
@@ -25,7 +25,7 @@ describe(`AtFor directive`, () => {
         ) {}
     }
 
-    beforeEach(() => MockBuilder(TestComponent).keep(ForDirective));
+    beforeEach(() => MockBuilder(TestComponent).keep(AtForDirective));
 
     it(`when ngFor is falsy shows loading`, () => {
         const fixture = MockRender(TestComponent);

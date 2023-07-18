@@ -1,26 +1,26 @@
-import {MockBuilder, MockInstance, MockRender, ngMocks} from 'ng-mocks';
-import {FormatDatePipe} from './format-date.pipe';
+import {TestBed} from '@angular/core/testing';
+import {MockInstance, MockProvider, ngMocks} from 'ng-mocks';
+import {configureTestSuite} from '@utils/configure-test-suit';
+import {AtFormatDatePipe} from './format-date.pipe';
 import {FormatDateService} from './format-date.service';
-import {Component} from "@angular/core";
 
-describe(`atFormatDate`, () => {
-    @Component({
-        template: '',
-        standalone: true,
-        providers: [FormatDatePipe, FormatDateService]
-    })
-    class TestComponent {}
+describe(`AtFormatDate pipe`, () => {
+    const formatFn = jest.fn();
 
-    beforeEach(() => MockBuilder(TestComponent).keep(FormatDatePipe));
+    configureTestSuite(() => {
+        TestBed.configureTestingModule({
+            providers: [
+                AtFormatDatePipe,
+                MockProvider(FormatDateService, {format: formatFn}),
+            ],
+        });
+    });
 
     it(`should call format service method`, () => {
-        const formatFn = jest.fn();
-        MockInstance(FormatDateService, 'format', formatFn)
-
-        MockRender(TestComponent);
+        MockInstance(FormatDateService, 'format', formatFn);
 
         const date = new Date();
-        const formatDatePipe = ngMocks.findInstance(FormatDatePipe);
+        const formatDatePipe = ngMocks.findInstance(AtFormatDatePipe);
 
         formatDatePipe.transform(date);
 

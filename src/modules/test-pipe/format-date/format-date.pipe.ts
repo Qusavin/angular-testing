@@ -6,7 +6,7 @@ import {FormatDateService} from './format-date.service';
     name: 'atFormatDate',
     standalone: true,
 })
-export class FormatDatePipe implements PipeTransform {
+export class AtFormatDatePipe implements PipeTransform {
     constructor(private readonly formatDateService: FormatDateService) {}
 
     transform(date: Date): Observable<string> {

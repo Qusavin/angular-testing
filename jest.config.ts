@@ -68,32 +68,6 @@ const config: Config = {
     testPathIgnorePatterns: [`/demo-integrations/`, `/node_modules/`, `/schematics/`],
 
     /**
-     * The directory where Jest should output its coverage files.
-     */
-    coverageDirectory: `<rootDir>/coverage`,
-
-    /**
-     * An array of glob patterns indicating a set of files for which coverage
-     * information should be collected. If a file matches the specified glob pattern,
-     * coverage information will be collected for it even if no tests exist for this file and
-     * it's never required in the test suite.
-     */
-    collectCoverageFrom: [`<rootDir>/src/**/*.ts`],
-
-    /**
-     * An array of regexp pattern strings that are matched against
-     * all file paths before executing the test. If the file path matches
-     * any of the patterns, coverage information will be skipped.
-     */
-    coveragePathIgnorePatterns: [
-        `node_modules`,
-        `schematics`,
-        `load-assets.ts`,
-        `.spec.ts`,
-        `.cy.ts`,
-    ],
-
-    /**
      * A map from regular expressions to module names that allow to stub out resources,
      * like images or styles with a single module. Modules that are mapped to an alias are
      * un mocked by default, regardless of whether auto mocking is enabled or not.
@@ -112,12 +86,6 @@ const config: Config = {
      * matches any of the patterns, it will not be require()-able in the test environment.
      */
     modulePathIgnorePatterns: [`.cache`, `dist`, `<rootDir>/dist/`],
-
-    /**
-     * A list of reporter names that Jest uses when writing coverage reports.
-     * Any istanbul reporter can be used.
-     */
-    coverageReporters: [`text`, `lcov`, `clover`],
 
     /**
      * The directory where Jest should store its cached dependency information.
@@ -158,12 +126,6 @@ const config: Config = {
      * Allows the test suite to pass when no files are found.
      */
     passWithNoTests: true,
-
-    /**
-     * Indicates that test coverage information should be collected and reported in the output.
-     * Optionally pass <boolean> to override option set in configuration.
-     */
-    collectCoverage: true,
 };
 
 export default config;

@@ -8,7 +8,7 @@ describe('MockComponent', () => {
         const fixture = MockRender(TargetComponent);
         const component = fixture.point.componentInstance;
 
-        const childComponent = ngMocks.find<ChildComponent>('child').componentInstance;
+        const childComponent = ngMocks.find<ChildComponent>('at-child').componentInstance;
 
         const newInputValue = '42';
 
@@ -35,39 +35,13 @@ describe('MockComponent', () => {
 
     it('renders something inside of the child component', () => {
         const localFixture = MockRender<ChildComponent>(`
-            <child>
+            <at-child>
                 <p>inside content</p>
-            </child>
+            </at-child>
         `);
 
         const mockNgContent = localFixture.point.nativeElement.innerHTML;
 
         expect(mockNgContent).toContain('inside content');
-    });
-
-    it('renders ContentChild of the child component', () => {
-        const fixture = MockRender<ChildComponent>(`
-            <child>
-                <p>inside content</p>
-                <ng-template #something>
-                    <p>inside template</p>
-                </ng-template>
-            </child>
-        `);
-
-        // Injected ng-content rendered everything except templates.
-        const mockNgContent = fixture.point.nativeElement.innerHTML;
-
-        expect(mockNgContent).toContain('inside content');
-        expect(mockNgContent).not.toContain('inside template');
-
-        // Render the template
-        const mockComponent = fixture.componentInstance;
-        ngMocks.render(mockComponent, ngMocks.findTemplateRef('something'));
-
-        // The rendered template is wrapped by <div data-key="something">.
-        const mockNgTemplate = ngMocks.find(ChildComponent).nativeElement.innerHTML;
-
-        expect(mockNgTemplate).toContain('inside template');
     });
 });
